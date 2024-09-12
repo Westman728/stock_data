@@ -3,18 +3,18 @@ from datetime import datetime
 import logging
 from alpha_vantage.timeseries import TimeSeries
 from sqlalchemy import create_engine
+import configparser
 
-
-API_KEY = "LVP0FSZDXOBA30HT"    # Replace with own
+config = configparser.ConfigParser()
+config.read('config.ini')
+API_KEY = config.get('API', 'KEY') 
 ts = TimeSeries(key = API_KEY, output_format="pandas")
-engine = create_engine('mssql+pyodbc://admin:Logon123@MEGAPC/StockMarket?driver=ODBC+Driver+17+for+SQL+Server')
+engine = config.get('ENGINE_CON', 'engine_str')
+engine = create_engine(engine)
 
-logging = logging.getLogger()
 logging.basicConfig(filename="logfile.log", 
                             filemode='w',
-                            level=logging.ERROR,
+                            level=logging.INFO,
                             format='%(asctime)s - %(levelname)s - %(message)s'
                             )
-logging.info("Main script executing..")
-
-
+logger = logging.getLogger()

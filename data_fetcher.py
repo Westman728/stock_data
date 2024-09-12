@@ -3,14 +3,14 @@ from main import create_engine
 from main import logging
 from main import ts
 
-engine = create_engine('mssql+pyodbc://admin:Logon123@MEGAPC/StockMarket?driver=ODBC+Driver+17+for+SQL+Server')
+# engine = create_engine('mssql+pyodbc://admin:Logon123@MEGAPC/StockMarket?driver=ODBC+Driver+17+for+SQL+Server')
 
 data_list = ("MSFT", "AAPL", "DIS", "NFLX")
 ticker_data = {}
 
 
 for idx, ticker in enumerate(data_list, start=1):
-    logging.info("Starting data-fetching process..")
+    logging.info(f"Starting data-fetching process iteration: {idx}:{ticker}.")
     data = ts.get_daily(ticker)
     df = data[0]
     df = df.rename(columns={"1. open":"open", 
@@ -30,5 +30,5 @@ for idx, ticker in enumerate(data_list, start=1):
     for entry in df["volume"]:
         type_checker.check_int(entry)
     ticker_data[ticker] = df
-    ticker_data[ticker].to_sql("stock_data", con=engine, if_exists="replace", index=False)
-    logging.info("Data-fetch complete")
+    ticker_data[ticker].to_sql("stock_data", con=engine, if_exists="append", index=False)
+    logging.info(f"Data-fetch for iteration: {idx}:{ticker} complete.")

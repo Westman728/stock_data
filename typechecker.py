@@ -3,12 +3,12 @@ from main import datetime
 
 class TypeChecker:
     """Error handler class containing a bunch of checks."""
-    def __init__(self, log_file="error.log"):
-        logging = logging(__name__)
+    def __init__(self, logger):
+        self.logger = logger
     
     def log_error(self, error_message):
         """Logs error to a file"""
-        logging.error(error_message)
+        self.logger.error(error_message)
     
     def check_int(self, value):
         """Checks if result is a integer."""
@@ -52,7 +52,7 @@ class TypeChecker:
     
     def check_date(self, value):
         """Checks if result is date/datetime"""
-        if isinstance(value, datetime):
+        if isinstance(value, (datetime, datetime.date)):
             return value
         elif isinstance(value, (int, float)):
                 self.log_error(f"{value} cannot be converted to datetime.")
@@ -67,5 +67,4 @@ class TypeChecker:
             self.log_error(f"TypeError: {type(value)} is not a valid date")
             return None
 
-type_checker = TypeChecker()
-logging.info("TypeChecker executed..")
+type_checker = TypeChecker(logging)
