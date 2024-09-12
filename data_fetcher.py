@@ -31,3 +31,4 @@ for idx, ticker in enumerate(data_list, start=1):
         type_checker.check_int(entry)
     ticker_data[ticker] = df
     ticker_data[ticker].to_sql("stock_data", con=engine, if_exists="replace", index=False)
+    logging.info("Data-fetch complete")
