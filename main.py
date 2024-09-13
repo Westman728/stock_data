@@ -9,8 +9,8 @@ config = configparser.ConfigParser()
 config.read('config.ini')
 API_KEY = config.get('API', 'KEY') 
 ts = TimeSeries(key = API_KEY, output_format="pandas")
-engine = config.get('ENGINE_CON', 'engine_str')
-engine = create_engine(engine)
+engine_con = config.get('ENGINE_CON', 'engine_str')
+engine = create_engine(engine_con)
 
 logging.basicConfig(filename="logfile.log", 
                             filemode='w',
