@@ -3,8 +3,6 @@ from main import create_engine
 from main import logging
 from main import ts
 
-# engine = create_engine('mssql+pyodbc://admin:Logon123@MEGAPC/StockMarket?driver=ODBC+Driver+17+for+SQL+Server')
-
 data_list = ("MSFT", "AAPL", "DIS", "NFLX")
 ticker_data = {}
 
