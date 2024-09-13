@@ -1,5 +1,5 @@
 from typechecker import type_checker
-from main import create_engine
+from main import engine
 from main import logging
 from main import ts
 

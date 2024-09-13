@@ -1,5 +1,6 @@
+import pytest
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, date
 import logging
 from alpha_vantage.timeseries import TimeSeries
 from sqlalchemy import create_engine

@@ -1,5 +1,5 @@
 from main import logging
-from main import datetime
+from main import datetime, date
 
 class TypeChecker:
     """Error handler class containing a bunch of checks."""
@@ -52,7 +52,7 @@ class TypeChecker:
     
     def check_date(self, value):
         """Checks if result is date/datetime"""
-        if isinstance(value, (datetime, datetime.date)):
+        if isinstance(value, type((datetime, date))):
             return value
         elif isinstance(value, (int, float)):
                 self.log_error(f"{value} cannot be converted to datetime.")
