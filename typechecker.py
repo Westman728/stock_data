@@ -2,7 +2,7 @@ from main import logging
 from main import datetime, date
 
 class TypeChecker:
-    """Error handler class containing a bunch of checks."""
+    """Error handler class containing typechecks for int, float and dates (datetime). Converts if possible, else returns None. Logs deviations to logfile.log"""
     def __init__(self, logger):
         self.logger = logger
     
@@ -11,7 +11,7 @@ class TypeChecker:
         self.logger.error(error_message)
     
     def check_int(self, value):
-        """Checks if result is a integer."""
+        """Checks if result is an integer."""
         if isinstance(value, int):
             return value
         elif isinstance(value, float):
@@ -52,7 +52,7 @@ class TypeChecker:
     
     def check_date(self, value):
         """Checks if result is date/datetime"""
-        if isinstance(value, type((datetime, date))):
+        if isinstance(value, (date, datetime)):
             return value
         elif isinstance(value, (int, float)):
                 self.log_error(f"{value} cannot be converted to datetime.")

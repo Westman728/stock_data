@@ -1,3 +1,4 @@
+""" Main script with imports, connection and log setups, edit config.ini with your API/SQL connection strings"""
 import pytest
 import pandas as pd
 from datetime import datetime, date
