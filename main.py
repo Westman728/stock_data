@@ -1,4 +1,5 @@
-""" Main script with imports, connection and log setups, edit config.ini with your API/SQL connection strings"""
+""" Main script with imports, connection and log setups, edit config.ini with your API/SQL connection strings.
+Uses Alpha Vantage's stock data API."""
 import pytest
 import pandas as pd
 from datetime import datetime, date
