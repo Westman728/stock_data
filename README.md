@@ -1,1 +1,2 @@
-A small pipeline that fetches stock market data, performs typechecks and transforms if necessary, then feeds the data to a SQL server. The batchfile can be set up to run as often as one would like. Set up API key and SQL server connection string in config.ini.
+A small pipeline that fetches stock market data, performs typechecks and transforms if necessary, then feeds the data to a SQL-server. The batchfile can be set up to run as often as one would like. Set up API key and SQL server connection string in config.ini. <br/>
+Currently set up to use Alpha_Vantage's API to import data into a Pandas DataFrame format, then use Pandas to_sql function to feed the SQL-server. TypeChecker ensures the fed data holds the correct datatypes, else logs an error.
