@@ -8,6 +8,7 @@ from alpha_vantage.timeseries import TimeSeries
 from sqlalchemy import create_engine
 import configparser
 
+# API key and engine connection, fetched from config.ini
 config = configparser.ConfigParser()
 config.read('config.ini')
 API_KEY = config.get('API', 'KEY') 

@@ -4,11 +4,12 @@ from typechecker import type_checker
 from main import engine
 from main import logging
 from main import ts
+from main import datetime, date
 
 data_list = ("MSFT", "AAPL", "DIS", "NFLX")
 ticker_data = {}
 
-
+# Added "id" column for possibility to separate stock tickers (could also insert the ticker itself). Use replace or append when feeding the SQL server, whichever is appropriate
 for idx, ticker in enumerate(data_list, start=1):
     logging.info(f"Starting data-fetching process iteration: {idx}:{ticker}.")
     data = ts.get_daily(ticker)

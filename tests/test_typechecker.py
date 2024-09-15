@@ -1,3 +1,4 @@
+"""Pytest module, run from "stock_data" folder"""
 from typechecker import type_checker
 from main import pytest
 from main import datetime
